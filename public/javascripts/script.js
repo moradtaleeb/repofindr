@@ -1,9 +1,9 @@
 $(document).ready(function(){
   const list_repositories = () => {
-    $('input[name=q]').removeClass("error"); //css("border-color", "rgba(34,36,38,.15)");
+    $('input[name=q]').removeClass("error");
     const query = $('input[name=q]').val();
     if(query.trim() === "") {
-      $('input[name=q]').addClass("error");//.css("border-color", "red");
+      $('input[name=q]').addClass("error");
       return;
     }
     $(".ui.loader").addClass("active");
@@ -19,7 +19,6 @@ $(document).ready(function(){
       }
     })
     .done(function(data){
-      console.log(data);
       $("#repos-list").html("");
       let followers_count = 0;
       let following_count = 0;
