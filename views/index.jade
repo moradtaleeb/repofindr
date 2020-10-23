@@ -1,5 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .ui.container
+    h1= title
+    .ui.grid.three.column.stackable
+      .left.floated.column
+        form.ui.search.item(method="get", id="search-form")
+          .ui.left.icon.input
+            input.wide(type="text", name="search", placeholder="Search GitHub Repos")
+            i.search.icon
+      .right.floated.column.right.aligned
+        .ui.form
+          .field
+            select(name="sort")
+              option(value="") Best Match
+              option(value="forks") Most Forks
+              option(value="stars") Most Stars
+        
+    .ui.grid
+      .ui.centered.inline.loader
+    
+    #repos-container
+      #repos-list.ui.relaxed.divided.list

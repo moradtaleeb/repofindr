@@ -2,6 +2,11 @@ doctype html
 html
   head
     title= title
+    link(rel='icon', sizes='16x16 32x32 48x48 64x64', href='/images/favicon.ico')
+    link(rel="stylesheet", href="/semantic/semantic.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js')
   body
     block content
+    script(src='/javascripts/script.js')
+    script(src='/semantic/semantic.min.js')

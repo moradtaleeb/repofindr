@@ -6,3 +6,25 @@ body {
 a {
   color: #00B7FF;
 }
+
+form .input {
+  width: 100%;
+}
+
+#repos-list {
+  padding-top: 28px;
+  padding-bottom: 40px;
+}
+#repos-list .item {
+  padding-bottom: 15px !important;
+}
+
+@media (max-width: 767px) {
+  select, form .input {
+    width: 100%;
+    max-width: 100%;
+  }
+  body {
+    padding: 20px 15px;
+  }
+}
