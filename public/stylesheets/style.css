@@ -13,6 +13,9 @@ form .input {
 form input.error {
   border-color: red !important;
 }
+select {
+  -webkit-appearance: none;
+}
 
 #repos-list {
   padding-top: 28px;
