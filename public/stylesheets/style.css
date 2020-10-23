@@ -10,6 +10,9 @@ a {
 form .input {
   width: 100%;
 }
+form input.error {
+  border-color: red !important;
+}
 
 #repos-list {
   padding-top: 28px;

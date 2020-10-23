@@ -1,21 +1,18 @@
 $(document).ready(function(){
   const list_repositories = () => {
-    $('input[name=search]').css("border-color", "rgba(34,36,38,.15)");
-    const query = $('input[name=search]').val();
+    $('input[name=q]').removeClass("error"); //css("border-color", "rgba(34,36,38,.15)");
+    const query = $('input[name=q]').val();
     if(query.trim() === "") {
-      $('input[name=search]').css("border-color", "red");
+      $('input[name=q]').addClass("error");//.css("border-color", "red");
       return;
     }
     $(".ui.loader").addClass("active");
     const sort = $('select[name=sort]').val();
     $.ajax({
       type: 'get',
-      url: 'https://api.github.com/search/repositories',
-      data: { 'q': query, 'sort': sort },
+      url: '/repos',
+      data: { q: query, sort: sort },
       dataType: 'json',
-      headers: {
-        authorization: "token 76d122c9b158f30bb276e2fb25ede2c7fab30745"
-      },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         $("#repos-list").html("<p>" + errorThrown + "</p>");
         $(".ui.loader").removeClass("active");
@@ -31,11 +28,8 @@ $(document).ready(function(){
         // get followers and following count
         $.ajax({
           type: 'get',
-          url: 'https://api.github.com/users/'+item.owner.login,
+          url: '/repos/'+item.owner.login,
           dataType: 'json',
-          headers: {
-            authorization: "token 76d122c9b158f30bb276e2fb25ede2c7fab30745"
-          }
         })
         .done(function(user) {
           followers_count = user.followers;
@@ -56,8 +50,6 @@ $(document).ready(function(){
         });
       });
       $(".ui.loader").removeClass("active");
-      // https://api.github.com/users/moradtaleeb/followers
-      // https://api.github.com/users/moradtaleeb/following
     });
   }
 

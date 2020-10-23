@@ -7,12 +7,12 @@ block content
       .ui.grid.three.column.stackable
         .left.floated.column
           .ui.left.icon.input
-            input(type="text", name="q", placeholder="Search GitHub Repos")
+            input.wide(type="text", name="search", placeholder="Search GitHub Repos")
             i.search.icon
         .right.floated.column.right.aligned
           .ui.form
             .field
-              select(name="sort")
+              select(name="sort", onchange="this.form.submit()")
                 option(value="") Best Match
                 option(value="forks") Most Forks
                 option(value="stars") Most Stars
@@ -22,3 +22,14 @@ block content
     
     #repos-container
       #repos-list.ui.relaxed.divided.list
+        if items.length > 0
+          each item in items
+            .item
+              .content
+                h2= item.name
+                p.description= item.description
+                .owner
+                  p= item.owner.login
+                .meta
+                  p= item.stargazers_count
+                  p= item.forks_count
