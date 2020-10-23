@@ -15,6 +15,10 @@ $(document).ready(function(){
       dataType: 'json',
       headers: {
         authorization: "token 76d122c9b158f30bb276e2fb25ede2c7fab30745"
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        $("#repos-list").html("<p>" + errorThrown + "</p>");
+        $(".ui.loader").removeClass("active");
       }
     })
     .done(function(data){
